@@ -11,37 +11,32 @@ import javax.persistence.Table;
 
 @Entity
 // Just to be extra safe if some database is case sensitive
-@Table(name="ARTICLE")
+@Table(name = "ARTICLE")
 public class Article {
 	@Id
-	@Column(name="ARTICLE_ID")
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@Column(name = "ARTICLE_ID")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 // I think that here should be something more
-	@Column(name="PUBLISHED_DATE")
+	@Column(name = "PUBLISHED_DATE")
 	private LocalDate publishedDate;
 
-	@Column(name="TITLE")
+	@Column(name = "TITLE")
 	private String title;
 
-	@Column(name="SHORT_DESCRIPTION")
+	@Column(name = "SHORT_DESCRIPTION")
 	private String shortDescription;
 
-	@Column(name="ARTICLE_TEXT")
+	@Column(name = "ARTICLE_TEXT")
 	private String articleText;
 
-	public Article(int id, LocalDate publishedDate, String title, String shortDescription, String articleText) {
-		this.id = id;
+	public Article(LocalDate publishedDate, String title, String shortDescription, String articleText) {
 		this.publishedDate = publishedDate;
 		this.title = title;
 		this.shortDescription = shortDescription;
 		this.articleText = articleText;
 	}
 
-	/*
-	 * Consumers of this class should only be allowed to construct fully initialized
-	 * java objects
-	 */
 	protected Article() {
 	}
 
